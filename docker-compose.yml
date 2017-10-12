@@ -6,8 +6,8 @@ services:
       - "6380:6379"
     volumes:
       - "$PWD/data/redis:/data"
-      - "$PWD/conf/redis:/conf"
-    command: redis-server /conf/redis.conf
+      - "$PWD/conf:/usr/local/etc/redis"
+    command: redis-server /usr/local/etc/redis/redis.conf
   mysql:
     image: mysql:latest
     ports:
