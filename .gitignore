@@ -2,3 +2,8 @@
 www
 data
 logs
+conf
+!conf/nginx-http/default.conf
+!conf/nginx-proxy/default.conf
+!conf/php/php.ini
+!conf/redis/redis.conf
