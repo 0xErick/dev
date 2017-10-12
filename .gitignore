@@ -1,5 +1,5 @@
 .idea
-
+www
 data
 logs
 conf
@@ -7,3 +7,4 @@ conf
 !conf/nginx-proxy/default.conf
 !conf/php/php.ini
 !conf/redis/redis.conf
+!www/default/public/index.php
