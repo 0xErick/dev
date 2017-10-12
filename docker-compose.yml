@@ -30,8 +30,6 @@ services:
       - redis
   nginx-http:
       image: nginx
-      ports:
-        - "8003:8003"
       volumes:
         - "$PWD/conf/nginx-http:/etc/nginx/conf.d"
         - "$PWD/logs/nginx-http:/wwwlogs"
