@@ -1,17 +1,23 @@
 version: '2'
 services:
+
+  deepstreamio:
+    image: deepstreamio/deepstream.io
+    volumes:
+      - "$PWD/data/deepstream:/usr/lcoal/deepstream/var"
+      - "$PWD/conf/deepstream:/usr/local/deepstream/conf"
   redis:
     image: redis:latest
     ports:
-      - "6380:6379"
+      - "6385:6379"
     volumes:
       - "$PWD/data/redis:/data"
-      - "$PWD/conf:/usr/local/etc/redis"
-    command: redis-server /usr/local/etc/redis/redis.conf
+      - "$PWD/conf/redis:/usr/local/etc/redis"
+    command: redis-server --appendonly yes
   mysql:
     image: mysql:latest
     ports:
-      - "3307:3306"
+      - "3308:3306"
     volumes:
       - "$PWD/data/mysql:/var/lib/mysql"
       - "$PWD/logs/mysql:/logs"
@@ -29,19 +35,19 @@ services:
       - mysql
       - redis
   nginx-http:
-      image: nginx
-      volumes:
-        - "$PWD/conf/nginx-http:/etc/nginx/conf.d"
-        - "$PWD/logs/nginx-http:/wwwlogs"
-        - "$PWD/www:/www"
-      links:
-        - php-fpm
+    image: nginx
+    volumes:
+      - "$PWD/conf/nginx-http:/etc/nginx/conf.d"
+      - "$PWD/logs/nginx-http:/wwwlogs"
+      - "$PWD/www:/www"
+    links:
+      - php-fpm
   nginx-proxy:
-      image: nginx
-      ports:
-        - "9999:80"
-      volumes:
-        - "$PWD/conf/nginx-proxy:/etc/nginx/conf.d"
-        - "$PWD/logs/nginx-proxy:/wwwlogs"
-      links:
-        - nginx-http
+    image: nginx
+    ports:
+      - "9999:80"
+    volumes:
+      - "$PWD/conf/nginx-proxy:/etc/nginx/conf.d"
+      - "$PWD/logs/nginx-proxy:/wwwlogs"
+    links:
+      - nginx-http
