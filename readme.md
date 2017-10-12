@@ -5,8 +5,8 @@
 
 ### use dev
 
-1. git clone  git@github.com:saqing/dev.git
-2. cd dev && docker-compose  start
+1. git clone git@github.com:saqing/dev.git
+2. cd dev && docker-compose up
 
 ### Then 
 
