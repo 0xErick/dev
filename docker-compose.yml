@@ -1,11 +1,18 @@
 version: '2'
 services:
-
-  deepstreamio:
+  workspace:
+    image: laradock/workspace
+    volumes:
+      - "$PWD/www:/www"
+    links:
+      - redis
+      - mysql
+  deepstream:
     image: deepstreamio/deepstream.io
     volumes:
-      - "$PWD/data/deepstream:/usr/lcoal/deepstream/var"
-      - "$PWD/conf/deepstream:/usr/local/deepstream/conf"
+      - "$PWD/conf/deepstream:/etc/deepstream"
+    links:
+      - redis
   redis:
     image: redis:latest
     ports:
@@ -51,3 +58,4 @@ services:
       - "$PWD/logs/nginx-proxy:/wwwlogs"
     links:
       - nginx-http
+      - deepstream

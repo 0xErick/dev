@@ -8,3 +8,6 @@ conf
 !conf/php/php.ini
 !conf/redis/redis.conf
 !www/default/public/index.php
+!conf/deepstream/config.yml
+!conf/deepstream/permissions.yml
+!conf/deepstream/users.yml
