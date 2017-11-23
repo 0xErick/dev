@@ -1,7 +1,7 @@
 version: '2'
 services:
   workspace:
-    image: laradock/workspace
+    image: saqing/workspace:dev
     volumes:
       - "$PWD/www:/www"
     links:
@@ -16,7 +16,7 @@ services:
   redis:
     image: redis:latest
     ports:
-      - "6385:6379"
+      - "6379:6379"
     volumes:
       - "$PWD/data/redis:/data"
       - "$PWD/conf/redis:/usr/local/etc/redis"
@@ -24,7 +24,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "3308:3306"
+      - "3306:3306"
     volumes:
       - "$PWD/data/mysql:/var/lib/mysql"
       - "$PWD/logs/mysql:/logs"
@@ -34,7 +34,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
   php-fpm:
-    image: mileschou/phalcon:7.1-fpm
+    image: saqing/php-dev
     volumes:
       - "$PWD/conf/php:/usr/local/etc/php"
       - "$PWD/www:/www"
@@ -52,10 +52,11 @@ services:
   nginx-proxy:
     image: nginx
     ports:
-      - "9999:80"
+      - "80:80"
     volumes:
       - "$PWD/conf/nginx-proxy:/etc/nginx/conf.d"
       - "$PWD/logs/nginx-proxy:/wwwlogs"
     links:
       - nginx-http
       - deepstream
+      - workspace

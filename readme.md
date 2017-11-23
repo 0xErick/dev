@@ -11,7 +11,7 @@
 ### Then 
 
 1. Open  browser 
-2. Visit  localhost:9999
+2. Visit  localhost
 3. You will see phpinfo 
 
 ### 目录介绍
@@ -155,5 +155,5 @@
 
 9. cd   && cd dev && docker-compose restart
 
-10. Everything is OK,try visit   http://demo4dev.local:9999   and   http://demo4dev.local:9999/api  
+10. Everything is OK,try visit   http://demo4dev.local   and   http://demo4dev.local/api  
 
