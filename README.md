@@ -22,6 +22,7 @@
 
   - docker-compose up -d   启动一组容器
   - docker-compose stop    关闭一组容器
+  - docker-sync clean          清除配置缓存
   - docker-sync  start           打开文件同步
   - docker-sync  stop            关闭文件同步
   - docker restart  nginx      重启 nginx
@@ -30,15 +31,15 @@
   - code  存放代码
   - nginx-conf 存放 nginx 配置
 - 连接数据库
- - MySQL
+- MySQL
    - 5.7   root:root@MySQL5.7  PORT 3306
    - 8.0   root:root@MySQL8.0  PORT 3306
- - Redis
+- Redis
    - 3.2   HOST:Redis3.2  PORT 6379   NO Password
    - 4.0   HOST:Redis4.0  PORT 6379   NO Password
- - MongoDB
+- MongoDB
    - 3.6  root:root@MongoDB3.6  PORT 27017 
- - RethinkDB
+- RethinkDB
    - 2.3  HOST:RethinkDB2.3  PORT 27015   NO Password
 - Websocket 
   - WAMP 协议 
@@ -66,8 +67,8 @@
 
 ```
 1. git clone git@github.com:saqing/dev.git
-2. cd dev && docker-compose up -d
-3. docker-sync start
+2. cd dev && docker-sync clean &&docker-sync start
+3. docker-compose up -d
 ```
 
 
