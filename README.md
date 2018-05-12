@@ -124,6 +124,19 @@ server {
 
 
 
+日常开发操作
+
+```
+1.启动文件同步 cd dev && docker-sync clean &&docker-sync start
+2.启动容器服务 docker-compose up -d  在 dev 目录执行
+3.重启 nginx  docker restart nginx
+4.进入 app容器  docker exec -it app /bin/bash  
+5.关闭容器服务 docker-compose stop   在 dev 目录执行
+6.关闭文件同步 docker-sync stop      在 dev 目录执行
+```
+
+
+
 
 
 
