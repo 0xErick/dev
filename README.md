@@ -77,10 +77,10 @@
 
 ```
 1.创建一个项目    cd code && git clone git@github.com:saqing/dev-example.git
-2.配置 nginx     cd nginx-conf && vi dev-example.conf
+2.配置 nginx     cd .. && cd nginx-conf && vi dev-example.conf
 3.重启 nginx     docker restart nginx
 4.更新 host      在 /etc/hosts 添加 127.0.0.1  dev.example.local
-5.在浏览器访问 dev.example.local ，你可以看到 phpinfo 信息
+5.在浏览器访问 http://dev.example.local ，你可以看到 phpinfo 信息
 ```
 
 
