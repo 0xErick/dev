@@ -50,7 +50,19 @@
 
 ## 如何开始
 
-环境准备
+准备工作
+
+ ```
+1. 安装 docker edge Version 18.05.0 
+参考 https://store.docker.com/editions/community/docker-ce-desktop-mac
+
+2. 安装 docker-sync  
+参考 https://github.com/EugenMayer/docker-sync/wiki
+ ```
+
+
+
+环境搭建
 
 ```
 1. git clone git@github.com:saqing/dev.git
