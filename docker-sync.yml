@@ -1,0 +1,23 @@
+version: 2
+options:
+  
+
+  # default: docker-compose.yml if you like, you can set a custom location (path) of your compose file like ~/app/compose.yml
+  # HINT: you can also use this as an array to define several compose files to include. Order is important!
+  compose-file-path: 'docker-compose.yml'
+
+  # optional, activate this if you need to debug something, default is false
+  # IMPORTANT: do not run stable with this, it creates a memory leak, turn off verbose when you are done testing
+  verbose: true
+
+syncs:
+  code-sync:
+    src: './code'
+    host_disk_mount_mode: 'cached' # see https://docs.docker.com/docker-for-mac/osxfs-caching/#cached
+    # other unison options can also be specified here, which will be used when run under osx,
+    # and ignored when run under linux
+
+    sync_excludes: ['vendor',"node_modules"]
+    monit_enable: true
+    monit_interval: 10
+    monit_high_cpu_cycles: 6

@@ -1,0 +1,7 @@
+.docker-sync
+
+code/**
+!code/.gitkeep
+
+nginx-conf/**
+!nginx-conf/default.conf
