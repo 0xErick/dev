@@ -54,7 +54,7 @@
 准备工作
 
  ```
-1. 安装 docker edge Version 18.05.0 
+1. 安装 docker stable Version 18.03
 参考 https://store.docker.com/editions/community/docker-ce-desktop-mac
 
 2. 安装 docker-sync  
@@ -79,7 +79,7 @@
 1.创建一个项目    cd code && git clone git@github.com:saqing/dev-example.git
 2.配置 nginx     cd .. && cd nginx-conf && vi dev-example.conf
 3.重启 nginx     docker restart nginx
-4.更新 host      在 /etc/hosts 添加 127.0.0.1  dev.example.local
+4.更新 host      在宿主机 /etc/hosts 中添加 127.0.0.1  dev.example.local
 5.在浏览器访问 http://dev.example.local ，你可以看到 phpinfo 信息
 ```
 
