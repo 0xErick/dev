@@ -86,7 +86,7 @@ services:
     container_name: crossbar
 
   app:
-    image: saqing/php-dev:node8
+    image: saqing/php-dev:latest
     volumes:
       - code-sync:/www/code:nocopy
     links:
