@@ -17,7 +17,7 @@ syncs:
     # other unison options can also be specified here, which will be used when run under osx,
     # and ignored when run under linux
 
-    sync_excludes: ['vendor',"node_modules"]
+    sync_excludes: ['vendor',"node_modules",'.git',"*.log","storage"]
     monit_enable: true
     monit_interval: 10
     monit_high_cpu_cycles: 6

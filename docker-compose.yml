@@ -1,5 +1,16 @@
 version: '3.6'
 services:
+  data:
+    image: ubuntu
+    volumes: 
+      - mysql57-data:/data/mysql57-data
+      - mysql80-data:/data/mysql80-data
+      - mongo36-data:/data/mongo36-data
+      - rethinkdb23-data:/data/rethinkdb23-data
+      - redis32-data:/data/redis32-data
+      - redis40-data:/data/redis40-data
+    container_name: data
+
   MySQL5.7:
     image: mysql:5.7
     ports: 
