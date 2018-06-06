@@ -5,77 +5,63 @@ services:
     volumes: 
       - mysql57-data:/data/mysql57-data
       - mysql80-data:/data/mysql80-data
-      - mongo36-data:/data/mongo36-data
+      - mongodb36-data:/data/mongodb36-data
       - rethinkdb23-data:/data/rethinkdb23-data
       - redis32-data:/data/redis32-data
       - redis40-data:/data/redis40-data
-    container_name: data
 
-  MySQL5.7:
+  mysql57:
     image: mysql:5.7
     ports: 
       - "10001:3306"
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
     volumes: 
       - mysql57-data:/var/lib/mysql
-    container_name: mysql57
 
-  MySQL8.0:
+  mysql80:
     image: mysql:8.0
     ports: 
       - "10002:3306"
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
     volumes: 
       - mysql80-data:/var/lib/mysql
-    container_name: mysql80
   
-  MongoDB3.6:
+  mongodb36:
     image: mongo:3.6
     ports:
       - "10003:27017"
       - "10004:8081"
-    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
-      - mongo36-data:/data/db
-    container_name: mongo36
-
-  RethinkDB2.3:
+      - mongodb36-data:/data/db
+  rethinkdb23:
     image: rethinkdb:2.3
     ports:
       - "10005:8080"
       - "10006:28015"
       - "10007:29015"
-    restart: always
     volumes:
       - rethinkdb23-data:/data
-    container_name: rethinkdb23
 
-  Redis3.2:
+  redis32:
     image: redis:3.2
     ports:
       - "10008:6379"
-    restart: always
     volumes:
       - redis32-data:/data
-    container_name: redis32
 
-  Redis4.0:
+  redis40:
     image: redis:4.0
     ports:
       - "10009:6379"
-    restart: always
     volumes:
       - redis40-data:/data
-    container_name: redis40
 
   Nginx1.14:
     image: nginx:1.14
@@ -94,26 +80,25 @@ services:
     image: crossbario/crossbar
     ports:
       - "8080:8080"
-    container_name: crossbar
 
   app:
     image: saqing/php-dev:latest
     volumes:
       - code-sync:/www/code:nocopy
     links:
-      - MySQL5.7
-      - MySQL8.0
-      - RethinkDB2.3
-      - MongoDB3.6
-      - Redis3.2
-      - Redis4.0
+      - mysql57
+      - mysql80
+      - rethinkdb23
+      - mongodb36
+      - redis32
+      - redis40
       - crossbar
     container_name: app
    
 volumes:
   mysql57-data: 
   mysql80-data:
-  mongo36-data:
+  mongodb36-data:
   rethinkdb23-data:
   redis32-data:
   redis40-data:
