@@ -5,3 +5,6 @@ code/**
 
 nginx-conf/**
 !nginx-conf/default.conf
+data
+logs
+conf
