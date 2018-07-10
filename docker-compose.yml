@@ -2,7 +2,7 @@ version: '3.6'
 services:
   data:
     image: ubuntu
-    volumes: 
+    volumes:
       - mysql57-data:/data/mysql57-data
       - mysql80-data:/data/mysql80-data
       - mongodb36-data:/data/mongodb36-data
@@ -12,24 +12,24 @@ services:
 
   mysql57:
     image: mysql:5.7
-    ports: 
+    ports:
       - "10001:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
-    volumes: 
+    volumes:
       - mysql57-data:/var/lib/mysql
 
   mysql80:
     image: mysql:8.0
-    ports: 
+    ports:
       - "10002:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: root
-    volumes: 
+    volumes:
       - mysql80-data:/var/lib/mysql
-  
+
   mongodb36:
     image: mongo:3.6
     ports:
@@ -85,6 +85,7 @@ services:
     image: saqing/php-dev:latest
     volumes:
       - code-sync:/www/code:nocopy
+      - "$PWD/php-fpm.d:/usr/local/etc/php-fpm.d"
     links:
       - mysql57
       - mysql80
@@ -94,9 +95,9 @@ services:
       - redis40
       - crossbar
     container_name: app
-   
+
 volumes:
-  mysql57-data: 
+  mysql57-data:
   mysql80-data:
   mongodb36-data:
   rethinkdb23-data:
@@ -104,5 +105,3 @@ volumes:
   redis40-data:
   code-sync:
      external: true
-
-
